@@ -9,7 +9,7 @@ if(len(sys.argv) == 3):
 
     dfData = pd.read_excel(sys.argv[1]) # no error handling
 
-    data = np.array(dfData.as_matrix())
+    data = np.array(dfData.as_matrix().transpose())
 
     i = 0
     prep = []
@@ -17,7 +17,7 @@ if(len(sys.argv) == 3):
         prep.extend(data[i])
         i += 1
 
-    prep = list(filter(lambda v: v==v, prep))
+    prep = list(filter(lambda v: v==v, prep)) # remove NaN values
 
     dfPrep = pd.DataFrame(prep)
 
